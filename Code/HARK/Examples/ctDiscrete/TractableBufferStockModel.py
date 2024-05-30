@@ -43,28 +43,6 @@ mystr = lambda number : "{:.4f}".format(number)
 # But a terminal does not permit inline figures, so we need to test jupyter vs terminal
 # Google "how can I check if code is executed in the ipython notebook"
 
-from IPython import get_ipython # In case it was run from python instead of ipython
-def in_ipynb():
-    try:
-        if str(type(get_ipython())) == "<class 'ipykernel.zmqshell.ZMQInteractiveShell'>":
-            return True
-        else:
-            return False
-    except NameError:
-        return False
-
-# Determine whether to make the figures inline (for spyder or jupyter)
-# vs whatever is the automatic setting that will apply if run from the terminal
-if in_ipynb():
-    # %matplotlib inline generates a syntax error when run from the shell
-    # so do this instead
-    get_ipython().run_line_magic('matplotlib', 'inline')
-else:
-    get_ipython().run_line_magic('matplotlib', 'auto')
-    print('You appear to be running from a terminal')
-    print('By default, figures will appear one by one')
-    print('Close the visible figure in order to see the next one')
-
 # Import the plot-figure library matplotlib
 
 import matplotlib.pyplot as plt
@@ -271,10 +249,8 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'PhaseDia.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'PhaseDia.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'PhaseDia.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+
+plt.show() 
 
 # %% [markdown]
 # ### Figure 2: The Consumption Function for the Employed Consumer
@@ -323,10 +299,8 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'cFunc.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'cFunc.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'cFunc.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+
+plt.show()
 
 # %% [markdown]
 # ### Figure 3 : Income and Consumption Growth
@@ -369,10 +343,7 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'GrowthA.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'GrowthA.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'GrowthA.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+plt.show() 
 
 # %% [markdown]
 # ### Figure 4 : The Effects of an Increase in Interest Rate
@@ -431,10 +402,7 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'GrowthB.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'GrowthB.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'GrowthB.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+plt.show() 
 
 # %% [markdown]
 # ### Figure 5 : The Effects of an Increase in Unemployment Risk
@@ -499,10 +467,7 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'cGroIncreaseMhoPlot.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'cGroIncreaseMhoPlot.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'cGroIncreaseMhoPlot.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+plt.show() 
 
 # %% [markdown]
 # ### Figure 6: The Effects of Lower $\theta$ On Consumption Function
@@ -552,10 +517,7 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'PhaseDiagramDecreaseThetaPlot.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'PhaseDiagramDecreaseThetaPlot.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'PhaseDiagramDecreaseThetaPlot.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+plt.show()
 
 # %% [markdown]
 # ### Figure 7: Path of $c^{e}$ Before and After $\theta$ Decline
@@ -606,10 +568,7 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'cPathAfterThetaDrop.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'cPathAfterThetaDrop.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'cPathAfterThetaDrop.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+plt.show()
 
 # %% [markdown]
 # ### Figure 8 : Path of $m^{e}$ Before and After $\theta$ Decline
@@ -628,10 +587,7 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'mPathAfterThetaDrop.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'mPathAfterThetaDrop.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'mPathAfterThetaDrop.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+plt.show()
 
 # %% [markdown]
 # ### Figure 9 : Marginal Propensity to Consume $\kappa_{t}$ Before and After $\theta$ Decline
@@ -658,7 +614,4 @@ if Generator:
     plt.savefig(os.path.join(Figures_HARK_dir, 'MPCPathAfterThetaDrop.jpg'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'MPCPathAfterThetaDrop.pdf'))
     plt.savefig(os.path.join(Figures_HARK_dir, 'MPCPathAfterThetaDrop.svg'))
-if not in_ipynb:
-    plt.show(block=False) 
-else:
-    plt.show(block=True)
+plt.show()
